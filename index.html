@@ -23,25 +23,7 @@
         <div id="unity-build-title">DotToDot</div>
       </div>
     </div>
-    <script src="Build/WebGL Builds.loader.js"></script>
-<script src="Build/WebGL Builds.framework.js.unityweb"></script>
-<script src="Build/WebGL Builds.wasm.unityweb"></script>
     <script>
-var inputElement = document.createElement('input');
-inputElement.setAttribute('type', 'text');
-document.body.appendChild(inputElement);
-
-function OpenInputKeyboard(text) {
-    inputElement.value = text;
-    inputElement.focus();  // 確保鍵盤顯示
-}
-
-function CloseInputKeyboard() {
-    inputElement.blur();  // 取消焦點，關閉鍵盤
-}
-
-
-
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -55,6 +37,16 @@ function CloseInputKeyboard() {
       // Modify or remove this function to customize the visually presented
       // way that non-critical warnings and error messages are presented to the
       // user.
+      function ShowKeyboard() {
+    var inputElement = document.createElement("input");
+    inputElement.setAttribute("type", "text");
+    inputElement.style.position = "absolute";
+    inputElement.style.top = "-100px";  // 將它隱藏在螢幕外
+    document.body.appendChild(inputElement);
+    inputElement.focus();
+}
+
+
       function unityShowBanner(msg, type) {
         function updateBannerVisibility() {
           warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
@@ -132,7 +124,6 @@ function CloseInputKeyboard() {
         });
       };
       document.body.appendChild(script);
-
     </script>
   </body>
 </html>
